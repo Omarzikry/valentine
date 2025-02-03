@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine's Day</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: pink;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        font-size: 2em;
+        color: red;
+      }
+      .buttons {
+        margin-top: 20px;
+      }
+      button {
+        font-size: 1.5em;
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        transition: all 0.2s;
+      }
+      .yes {
+        background-color: green;
+        color: white;
+        top: 70%;
+        left: 50%;
+        transform: translateX(-120%);
+      }
+      .no {
+        background-color: red;
+        color: white;
+        top: 70%;
+        right: 50%;
+        transform: translateX(120%);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Will you be my Valentine?</h1>
+    <div class="buttons">
+      <button class="yes">Yes</button>
+      <button class="no">No</button>
+    </div>
+    <script>
+      const yesButton = document.querySelector('.yes');
+      const noButton = document.querySelector('.no');
+
+      yesButton.addEventListener('mouseover', () => {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        yesButton.style.position = 'absolute';
+        yesButton.style.left = `${x}px`;
+        yesButton.style.top = `${y}px`;
+      });
+
+      noButton.addEventListener('click', () => {
+        setTimeout(() => {
+          noButton.textContent = 'My bad, this is the yes button';
+          noButton.classList.remove('no');
+          noButton.classList.add('yes');
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>
